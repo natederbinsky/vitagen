@@ -68,7 +68,7 @@
 <div id="container">
 	<div id="top">
 		<div id="mug">
-<img style="-moz-border-radius: 6px; border-radius: 6px;" src="<?php echo htmlentities( $user['mug'] ); ?>" alt="<?php echo htmlentities( $user['name'] ); ?>" />
+			<img src="<?php echo htmlentities( $user['mug'] ); ?>" alt="<?php echo htmlentities( $user['name'] ); ?>" />
 		</div>
 	
 		<div id="contact">                

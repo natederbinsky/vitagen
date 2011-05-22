@@ -38,7 +38,7 @@ a:hover
 
 #container
 {
-	<?php echo ( ( $type == 'mobile' )?('width: device-width;'):('') . "\n" ); ?>
+	<?php echo ( ( $type == 'mobile' )?('width: device-width;'):('width: 740px;') . "\n" ); ?>
 	margin: 20px 5px;
 }
 
@@ -60,6 +60,8 @@ a:hover
 {
 	height: 100%;
 	width: 100%;
+	-moz-border-radius: 6px; 
+	border-radius: 6px;
 }
 
 #contact
