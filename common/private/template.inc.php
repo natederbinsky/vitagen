@@ -7,7 +7,7 @@
 		<!-- default: http://pc.de/ico/ -->
 		<link rel="shortcut icon" href="{favico}" />
 
-		<link type="text/css" href="common/public/jquery/jquery-ui-1.8.13.custom.css" rel="stylesheet" />	
+		<link type="text/css" href="common/public/jquery/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
 		<script type="text/javascript" src="common/public/jquery/jquery-1.5.1.min.js"></script>
 		<script type="text/javascript" src="common/public/jquery/jquery-ui-1.8.13.custom.min.js"></script>
 
