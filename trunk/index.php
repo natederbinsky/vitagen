@@ -115,7 +115,9 @@
 </div>
 
 <div id="footer">
-	Last updated on <?php echo htmlentities( date( 'j F Y', filemtime( $_SERVER['SCRIPT_FILENAME'] ) ) . "\n" ); ?>
+	Last updated on <?php echo htmlentities( date( 'j F Y', filemtime( $_SERVER['SCRIPT_FILENAME'] ) ) . '.' . "\n" ); ?>
+	<br />
+	Powered by <a href="http://vitagen.googlecode.com" target="_blank">vitagen</a>.
 </div>
 
 <?php
