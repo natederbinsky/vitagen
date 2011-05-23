@@ -11,6 +11,7 @@
 			$user['email'] = 'user@domain.com';
 			$user['contact'] = 'City, State';
 			$user['linkedin_url'] = NULL;
+			$user['flickr_url'] = NULL;
 			$user['g_analytics'] = NULL;
 			$user['tabs'] = array( 'cv'=>'CV', 'links'=>'Links' );
 			$user['handler'] = '_example';
@@ -85,9 +86,9 @@
 				if ( ( $page_info['type'] == 'full' ) && !is_null( $user['linkedin_url'] ) )
 				{
 					$li = array();
-					$li[] = '<div class="noprint">';
+					$li[] = '<span class="noprint">';
 					$li[] = ( "\t" . '<a target="_blank" href="' . htmlentities( $user['linkedin_url'] ) . '" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View ' . htmlentities( $user['name'] ) . '\'s LinkedIn profile" style="vertical-align:middle" border="0"></span></a>' );
-					$li[] = '</div>';
+					$li[] = '</span>';
 					
 					foreach ( $li as $v )
 					{
@@ -95,6 +96,22 @@
 					}
 				}
 ?>
+
+<?php
+				if ( ( $page_info['type'] == 'full' ) && !is_null( $user['flickr_url'] ) )
+				{
+					$li = array();
+					$li[] = '<span class="noprint">';
+					$li[] = ( "\t" . '<a target="_blank" href="' . htmlentities( $user['flickr_url'] ) . '" style="text-decoration:none;"><img src="http://l.yimg.com/g/favicon.ico" width="20" height="15" alt="View ' . htmlentities( $user['name'] ) . '\'s Flickr pictures" style="vertical-align: middle; border: none;"></a>' );
+					$li[] = '</span>';
+					
+					foreach ( $li as $v )
+					{
+						echo ( "\t\t\t" . $v . "\n" );
+					}
+				}
+?>
+
 		</div>
 	</div>
 	
