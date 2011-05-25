@@ -15,7 +15,10 @@ html
 
 body
 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: black;
+	
 	padding: 0px;
 	margin: 10px;
 }
@@ -66,24 +69,26 @@ a:hover
 
 #contact
 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: black;
+	
 	float: left;
 	padding: 0;
 	margin: 0;
-	font-size: 11px;
 	height: 100%;
 }
 
 #contact .header
 {
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
 #content
 {
 	clear: both;
-	padding: 15px 0px;                
-	font-size: 11px;
+	padding: 15px 0px;
 }
 
 #content li
@@ -101,6 +106,10 @@ a:hover
 
 #content .section
 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: black;
+	
 	margin-bottom: 15px;
 }
 
@@ -108,13 +117,22 @@ a:hover
 {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 20px;
+	
 	margin-bottom: 10px;
+}
+
+#content .self
+{
+	font-weight: 600;
 }
 
 #footer
 {
-	font-size: 70%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
 	font-style: italic;
+	color: black;
+	
 	clear: both;
 	padding-bottom: 5px;
 }
