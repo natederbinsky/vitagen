@@ -14,14 +14,14 @@ a
 	color: black;
 }
 
+#content .self
+{
+	font-weight: normal;
+}
+
 #footer
 {
 	display:none;
-}
-
-#arrow
-{
-	display: none;
 }
 
 .noprint
@@ -29,14 +29,19 @@ a
 	display: none;
 }
 
+.ui-tabs-nav 
+{ 
+	display: none; 
+}
+
 .ui-tabs
 {
 	border: none;
 }
 
-.ui-tabs-nav 
-{ 
-	display: none; 
+.ui-tabs .ui-tabs-panel
+{
+	padding: 0px;
 }
 
 .ui-tabs .ui-tabs-hide 
