@@ -10,5 +10,7 @@
 	
 	//$user['tabs'] = array( ''=>'', ''=>'' );
 	//$user['handler'] = '';
+	
+	//$user['timezone'] = '';
 
 ?>

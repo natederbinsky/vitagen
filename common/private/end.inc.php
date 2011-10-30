@@ -2,7 +2,10 @@
 	
 	// get page content
 	{
-		$temp = explode( "\n", ob_get_clean() );
+		$temp = ob_get_clean();
+		ob_start();
+		
+		$temp = explode( "\n", $temp );
 		foreach ( $temp as $k => $v )
 		{
 			$temp[ $k ] = ( "\t\t" . $v );
