@@ -15,12 +15,15 @@
 			$user['g_analytics'] = NULL;
 			$user['tabs'] = array( 'cv'=>'CV', 'links'=>'Links' );
 			$user['handler'] = '_example';
+			$user['timezone'] = 'America/Detroit';
 			
 			// override if available
 			@include( 'index.inc.php' );
 		}
 		
 		$page_info['title'] = $user['name'];
+		
+		date_default_timezone_set( $user['timezone'] );
 	}
 	
 	function _example( $id, $prefix )
