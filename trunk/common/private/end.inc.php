@@ -5,13 +5,20 @@
 		$temp = ob_get_clean();
 		ob_start();
 		
-		$temp = explode( "\n", $temp );
-		foreach ( $temp as $k => $v )
+		if ( $page_info['type'] != 'blank' )
 		{
-			$temp[ $k ] = ( "\t\t" . $v );
+			$temp = explode( "\n", $temp );
+			foreach ( $temp as $k => $v )
+			{
+				$temp[ $k ] = ( "\t\t" . $v );
+			}
+			
+			$page_info['content'] = implode( "\n", $temp );
 		}
-		
-		$page_info['content'] = implode( "\n", $temp );
+		else
+		{
+			$page_info['content'] = $temp;
+		}
 	}
 	
 	// get the template
@@ -27,6 +34,28 @@
 		$template = '{content}';
 	}
 	ob_end_clean();
+	
+	// head prefix = 2 tabs
+	{
+		$head = $page_info['head'];
+		foreach ( $head as $k => $v )
+		{
+			$head[ $k ] = ( "\t\t" . $v );
+		}
+		
+		$page_info['head'] = trim( implode( "\n", $head ) );
+	}
+	
+	// body events
+	{
+		$body = 'body';
+		foreach ( $page_info['body'] as $event => $action )
+		{
+			$body .= ( ' ' . htmlentities( $event ) . '="' . $action . '"' );
+		}
+		
+		$page_info['body'] = $body;
+	}
 	
 	// replace values in the template
 	foreach ( $page_info as $key => $val )

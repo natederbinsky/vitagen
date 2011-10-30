@@ -45,10 +45,41 @@
 				'Springfield Elementary School, <i>Bus Driver</i><br />Springfield (1990-present)<br />' . misc_list( array( 'Drive', 'Air Guitar' ) )
 			);
 			
+			$t_bands_init = array();
+			$t_bands_change = array();
+			{
+				$t_bands_init[0] = array();
+				$t_bands_init[0]['width'] = '"70%"';
+				$t_bands_init[0]['intervalUnit'] = 'Timeline.DateTime.DAY';
+				$t_bands_init[0]['intervalPixels'] = '100';
+				
+				$t_bands_init[1] = array();
+				$t_bands_init[1]['width'] = '"20%"';
+				$t_bands_init[1]['intervalUnit'] = 'Timeline.DateTime.WEEK';
+				$t_bands_init[1]['intervalPixels'] = '200';
+				$t_bands_init[1]['layout'] = '"overview"';
+				
+				$t_bands_init[2] = array();
+				$t_bands_init[2]['width'] = '"10%"';
+				$t_bands_init[2]['intervalUnit'] = 'Timeline.DateTime.YEAR';
+				$t_bands_init[2]['intervalPixels'] = '350';
+				$t_bands_init[2]['layout'] = '"overview"';
+								
+				$t_bands_change[1] = array( 'syncWith'=>'0', 'highlight'=>'true' );
+				$t_bands_change[2] = array( 'syncWith'=>'0', 'highlight'=>'true' );
+			}
+			
 			echo misc_section( 'Goals', 'I have always dreamt of being a doctor.', $prefix );
 			echo misc_section( 'Education', misc_list( $education ), $prefix );
 			echo misc_section( 'Skills', misc_list( $skills ), $prefix );
 			echo misc_section( 'Experience', $experience, $prefix );
+			
+			timeline_init( 'foo1', array('type'=>'XML', 'url'=>( $_SERVER['SCRIPT_NAME'] . '?' . http_build_query( array( 'blank'=>'Y', 'tab'=>'data' ) ) )), $t_bands_init, $t_bands_change, $prefix );
+			echo ( $prefix . '<span class="noprint">' . "\n" );
+			{
+				echo misc_section( 'Timeline', '<div id="foo1" style="height: 200px; border: 1px solid #aaa"></div>', ( $prefix . "\t" ) );
+			}
+			echo ( $prefix . '</span>' . "\n" );
 		}
 		else if ( $id == 'links' )
 		{
@@ -65,8 +96,57 @@
 			echo misc_section( 'Work', misc_list( $work ), $prefix );
 			echo misc_section( 'Procrastination', misc_list( $procrastination ), $prefix );
 		}
+		else if ( $id == 'data' )
+		{
+			header('Content-type: text/xml');
+			
+			$doc = new DomDocument('1.0');
+			$root = $doc->createElement('data');
+			$root = $doc->appendChild( $root );
+			
+			$child = $doc->createElement('event', 'all my troubles seemed so far away');
+			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('yesterday') ) );
+			$child->setAttribute( 'title', 'yesterday' );
+			$child->setAttribute( 'image', 'common/public/mug.default.png' );
+			$child = $root->appendChild( $child );
+			
+			$child = $doc->createElement('event', 'is a different day');
+			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('tomorrow') ) );
+			$child->setAttribute( 'title', 'tomorrow' );
+			$child->setAttribute( 'link', ( 'http://www.wolframalpha.com/input/?' . http_build_query( array( 'i'=>'what day is tomorrow' ) ) ) );
+			$child = $root->appendChild( $child );
+			
+			$child = $doc->createElement('event', 'while the blossoms still cling to the vine');
+			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('today') ) );
+			$child->setAttribute( 'icon', 'common/public/favico.default.ico' );
+			$child->setAttribute( 'title', 'today' );
+			$child = $root->appendChild( $child );
+			
+			$child = $doc->createElement('event', 'I went to Philadelphia, but it was closed');
+			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('last monday') ) );
+			$child->setAttribute( 'end', date( DATE_ISO8601, strtotime('last friday') ) );
+			$child->setAttribute( 'title', 'last week' );
+			$child->setAttribute( 'durationEvent', 'true' );
+			$child->setAttribute( 'color', 'red' );
+			$child->setAttribute( 'textColor', 'green' );
+			$child = $root->appendChild( $child );
+			
+			$child = $doc->createElement('event', 'I\'ll do something');
+			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('next monday') ) );
+			$child->setAttribute( 'end', date( DATE_ISO8601, strtotime('next friday') ) );
+			$child->setAttribute( 'title', 'next week' );
+			$child->setAttribute( 'durationEvent', 'true' );
+			$child->setAttribute( 'textColor', 'green' );
+			$child = $root->appendChild( $child );
+			
+			echo $doc->saveXML();
+		}
 	}
-	
+?>
+
+<?php	
+if ( $page_info['type'] != 'blank' )
+{
 ?>
 
 <div id="container">
@@ -161,6 +241,18 @@
 			echo ( "\t\t" . $v . "\n" );
 		}
 	}
+}
+else
+{
+	$tab = misc_param( 'tab' );
+	if ( empty( $tab ) )
+	{
+		$keys = array_keys( $user['tabs'] );
+		$tab = $keys[0];
+	}
+	
+	call_user_func_array( $user['handler'], array( $tab, "" ) );
+}
 ?>
 
 <?php

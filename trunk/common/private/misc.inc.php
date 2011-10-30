@@ -1,4 +1,30 @@
 <?php
+	
+	function misc_param( $name )
+	{
+		$return_val = '';
+		
+		if ( isset( $_GET[ $name ] ) )
+		{
+			$return_val = $_GET[ $name ];
+		}
+		else if ( isset( $_POST[ $name ] ) )
+		{
+			$return_val = $_POST[ $name ];
+		}
+		
+		if ( is_string( $return_val ) )
+		{
+			$return_val = trim( $return_val );
+			
+			if ( get_magic_quotes_gpc() )
+			{
+				$return_val = stripslashes( $return_val );
+			}
+		}
+		
+		return $return_val;
+	}
 
 	function misc_section( $title, $content, $prefix = '', $print = true, $page_break = false )
 	{
@@ -15,7 +41,7 @@
 				$temp[ $k ] = ( $prefix . "\t" . $v );
 			}
 			
-			$return_val .= ( $prefix . "\t" . implode( "\n", $temp ) . "\n" );
+			$return_val .= ( implode( "\n", $temp ) . "\n" );
 		}
 		
 		$return_val .= ( $prefix . '</div>' . "\n" );

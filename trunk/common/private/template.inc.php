@@ -17,7 +17,7 @@
 		{head}
 	</head>
 
-	<body>
+	<{body}>
 		{content}
 	</body>
 </html>

@@ -16,7 +16,7 @@
     {
         global $page_info;
 
-        $page_info['head'] .= ( _jquery_tabs( $tab_id ) . "\n" );
+        $page_info['head'][] = _jquery_tabs( $tab_id );
 
         echo ( $prefix . '<div id="' . htmlentities( $tab_id ) . '">' . "\n" );
 

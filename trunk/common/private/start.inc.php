@@ -9,6 +9,7 @@
 
 	// required libraries
 	require_once 'jquery.inc.php';
+	require_once 'timeline.inc.php';
 	require_once 'misc.inc.php';
 
 	// "constants"
@@ -16,10 +17,15 @@
 
 	$page_info['title'] = '';
 	$page_info['align'] = 'left';
-	$page_info['head'] = '';
+	$page_info['head'] = array();
+	$page_info['body'] = array();
 	
-	// currently supported: full, mobile
+	// currently supported: full, mobile, blank
 	$page_info['type'] = ( ( ( stripos( $_SERVER['HTTP_USER_AGENT'], 'iphone' ) !== FALSE ) || ( stripos( $_SERVER['HTTP_USER_AGENT'], 'ipod' ) !== FALSE ) || ( stripos( $_SERVER['HTTP_USER_AGENT'], 'Mobile' ) !== FALSE ) )?( 'mobile' ):( 'full' ) );
+	if ( misc_param('blank') === 'Y' )
+	{
+		$page_info['type'] = 'blank';
+	}
 	
 	// mobile-specific
 	if ( $page_info['type'] == 'mobile' )
