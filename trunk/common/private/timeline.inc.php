@@ -1,5 +1,10 @@
 <?php
 	
+	function timeline_date_format()
+	{
+		return 'F d Y H:i:s T';
+	}
+	
 	function timeline_events()
 	{
 		return array( 'onload', 'onresize' );
