@@ -105,26 +105,26 @@
 			$root = $doc->appendChild( $root );
 			
 			$child = $doc->createElement('event', 'all my troubles seemed so far away');
-			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('yesterday') ) );
+			$child->setAttribute( 'start', date( timeline_date_format(), strtotime('yesterday') ) );
 			$child->setAttribute( 'title', 'yesterday' );
 			$child->setAttribute( 'image', 'common/public/mug.default.png' );
 			$child = $root->appendChild( $child );
 			
 			$child = $doc->createElement('event', 'is a different day');
-			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('tomorrow') ) );
+			$child->setAttribute( 'start', date( timeline_date_format(), strtotime('tomorrow') ) );
 			$child->setAttribute( 'title', 'tomorrow' );
 			$child->setAttribute( 'link', ( 'http://www.wolframalpha.com/input/?' . http_build_query( array( 'i'=>'what day is tomorrow' ) ) ) );
 			$child = $root->appendChild( $child );
 			
 			$child = $doc->createElement('event', 'while the blossoms still cling to the vine');
-			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('today') ) );
+			$child->setAttribute( 'start', date( timeline_date_format(), strtotime('today') ) );
 			$child->setAttribute( 'icon', 'common/public/favico.default.ico' );
 			$child->setAttribute( 'title', 'today' );
 			$child = $root->appendChild( $child );
 			
 			$child = $doc->createElement('event', 'I went to Philadelphia, but it was closed');
-			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('last monday') ) );
-			$child->setAttribute( 'end', date( DATE_ISO8601, strtotime('last friday') ) );
+			$child->setAttribute( 'start', date( timeline_date_format(), strtotime('monday last week') ) );
+			$child->setAttribute( 'end', date( timeline_date_format(), strtotime('friday last week') ) );
 			$child->setAttribute( 'title', 'last week' );
 			$child->setAttribute( 'durationEvent', 'true' );
 			$child->setAttribute( 'color', 'red' );
@@ -132,8 +132,8 @@
 			$child = $root->appendChild( $child );
 			
 			$child = $doc->createElement('event', 'I\'ll do something');
-			$child->setAttribute( 'start', date( DATE_ISO8601, strtotime('next monday') ) );
-			$child->setAttribute( 'end', date( DATE_ISO8601, strtotime('next friday') ) );
+			$child->setAttribute( 'start', date( timeline_date_format(), strtotime('monday next week') ) );
+			$child->setAttribute( 'end', date( timeline_date_format(), strtotime('friday next week') ) );
 			$child->setAttribute( 'title', 'next week' );
 			$child->setAttribute( 'durationEvent', 'true' );
 			$child->setAttribute( 'textColor', 'green' );
