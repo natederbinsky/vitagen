@@ -30,8 +30,8 @@
 	// mobile-specific
 	if ( $page_info['type'] == 'mobile' )
 	{
-		$page_info['head'] .= ( '<meta name="viewport" content="user-scalable=no, width=device-width" />' . "\n" );
-		$page_info['head'] .= ( '<meta name="format-detection" content="telephone=no" />' . "\n" );
+		$page_info['head'][] = ( '<meta name="viewport" content="user-scalable=no, width=device-width" />' . "\n" );
+		$page_info['head'][] = ( '<meta name="format-detection" content="telephone=no" />' . "\n" );
 	}
 	
 	// public resources
