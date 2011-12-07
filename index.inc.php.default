@@ -6,6 +6,7 @@
 	//$user['contact'] = '';
 	//$user['linkedin_url'] = '';
 	//$user['flickr_url'] = '';
+	//$user['scholar_id'] = '';
 	//$user['g_analytics'] = '';
 	
 	//$user['tabs'] = array( ''=>'', ''=>'' );
