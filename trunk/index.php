@@ -12,6 +12,7 @@
 			$user['contact'] = 'City, State';
 			$user['linkedin_url'] = NULL;
 			$user['flickr_url'] = NULL;
+			$user['scholar_id'] = NULL;
 			$user['g_analytics'] = NULL;
 			$user['tabs'] = array( 'cv'=>'CV', 'links'=>'Links' );
 			$user['handler'] = '_example';
@@ -166,12 +167,31 @@ if ( $page_info['type'] != 'blank' )
 			<br /><br />
 
 <?php
+				if ( ( $page_info['type'] == 'full' ) && !is_null( $user['scholar_id'] ) )
+				{
+					$li = array();
+					$li[] = '<span class="noprint">';
+					$li[] = ( "\t" . '<a target="_blank" href="http://scholar.google.com/citations?user=' . htmlentities( $user['scholar_id'] ) . '&hl=en" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="common/public/scholar.png" width="15" height="15" alt="View ' . htmlentities( $user['name'] ) . '\'s Google Scholar Citations" style="vertical-align:middle" border="0"></span></a>' );
+					$li[] = '</span>';
+					$li[] = '&nbsp;&nbsp;';
+					
+					foreach ( $li as $v )
+					{
+						echo ( "\t\t\t" . $v . "\n" );
+					}
+				}
+	
+?>
+
+<?php
+	
 				if ( ( $page_info['type'] == 'full' ) && !is_null( $user['linkedin_url'] ) )
 				{
 					$li = array();
 					$li[] = '<span class="noprint">';
 					$li[] = ( "\t" . '<a target="_blank" href="' . htmlentities( $user['linkedin_url'] ) . '" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="common/public/linkedin.png" width="20" height="15" alt="View ' . htmlentities( $user['name'] ) . '\'s LinkedIn profile" style="vertical-align:middle" border="0"></span></a>' );
 					$li[] = '</span>';
+					$li[] = '&nbsp;';
 					
 					foreach ( $li as $v )
 					{
@@ -185,8 +205,9 @@ if ( $page_info['type'] != 'blank' )
 				{
 					$li = array();
 					$li[] = '<span class="noprint">';
-					$li[] = ( "\t" . '<a target="_blank" href="' . htmlentities( $user['flickr_url'] ) . '" style="text-decoration:none;"><img src="common/public/flickr.ico" width="20" height="15" alt="View ' . htmlentities( $user['name'] ) . '\'s Flickr pictures" style="vertical-align: middle; border: none;"></a>' );
+					$li[] = ( "\t" . '<a target="_blank" href="' . htmlentities( $user['flickr_url'] ) . '" style="text-decoration:none;"><img src="common/public/flickr.ico" width="15" height="15" alt="View ' . htmlentities( $user['name'] ) . '\'s Flickr pictures" style="vertical-align: middle; border: none;"></a>' );
 					$li[] = '</span>';
+					$li[] = '&nbsp;&nbsp;';
 					
 					foreach ( $li as $v )
 					{
