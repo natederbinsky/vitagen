@@ -1,17 +1,22 @@
 <?php
 	header("Content-Type: text/css");
-
-	$type = 'full';
-	if ( isset( $_GET['type'] ) && ( $_GET['type'] == 'mobile' ) )
-	{
-		$type = 'mobile';
-	}
 ?>
 
 a
 {
 	text-decoration: none;
 	color: black;
+}
+
+#top
+{
+	height: 80px;
+}
+
+#mug
+{	
+	width: 55px;
+	height: 80px;
 }
 
 #content .self
