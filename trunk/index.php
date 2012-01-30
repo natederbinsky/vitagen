@@ -1,5 +1,7 @@
 <?php
 
+	define( 'INC_FILE', 'index.inc.php' );
+	
 	{
 		require 'common/private/start.inc.php';
 		
@@ -19,7 +21,7 @@
 			$user['timezone'] = 'America/Detroit';
 			
 			// override if available
-			@include( 'index.inc.php' );
+			@include( INC_FILE );
 		}
 		
 		$page_info['title'] = $user['name'];
@@ -236,7 +238,7 @@ if ( $page_info['type'] != 'blank' )
 </div>
 
 <div id="footer">
-	Last updated on <?php echo htmlentities( date( 'j F Y', filemtime( $_SERVER['SCRIPT_FILENAME'] ) ) . '.' . "\n" ); ?>
+	Last updated on <?php echo htmlentities( date( 'j F Y', filemtime( ( is_readable( INC_FILE ) )?( INC_FILE ):( $_SERVER['SCRIPT_FILENAME'] ) ) ) . '.' . "\n" ); ?>
 	<br />
 	Powered by <a href="http://vitagen.googlecode.com" target="_blank">vitagen</a>.
 </div>
