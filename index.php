@@ -50,7 +50,7 @@
 			
 			if ( !is_null( $user[ 'css_custom_' . $css ] ) && is_readable( $user[ 'css_custom_' . $css ] ) )
 			{
-				$page_info['head'][] = ( '<link href="' . htmlentities( $user[ 'css_custom_' . $css ] ) . '?type=' . $page_info['type'] . '" rel="stylesheet" type="text/css" media="' . htmlentities( $css ) . '" />' );
+				$page_info['head'][] = ( '<link href="' . htmlentities( $user[ 'css_custom_' . $css ] ) . '?' . http_build_query( array( 'type'=>$page_info['type'] ) ) . '" rel="stylesheet" type="text/css" media="' . htmlentities( $css ) . '" />' );
 			}
 		}
 	}
@@ -198,7 +198,7 @@ if ( $page_info['type'] != 'blank' )
 				{
 					$li = array();
 					$li[] = '<span class="noprint">';
-					$li[] = ( "\t" . '<a target="_blank" href="http://scholar.google.com/citations?user=' . htmlentities( $user['scholar_id'] ) . '&hl=en" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="common/public/scholar.png" width="15" height="15" alt="View ' . htmlentities( $user['name'] ) . '\'s Google Scholar Citations" style="vertical-align:middle" border="0"></span></a>' );
+					$li[] = ( "\t" . '<a target="_blank" href="http://scholar.google.com/citations?' . http_build_query( array( 'user'=>htmlentities( $user['scholar_id'] ), 'hl'=>'en' ) ) . '" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="common/public/scholar.png" width="15" height="15" alt="View ' . htmlentities( $user['name'] ) . '\'s Google Scholar Citations" style="vertical-align:middle" border="0"></span></a>' );
 					$li[] = '</span>';
 					$li[] = '&nbsp;&nbsp;';
 					
