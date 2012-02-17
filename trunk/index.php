@@ -19,6 +19,12 @@
 			$user['tabs'] = array( 'cv'=>'CV', 'links'=>'Links' );
 			$user['handler'] = '_example';
 			$user['timezone'] = 'America/Detroit';
+			$user['favico'] = NULL;
+			$user['css_base_all'] = true;
+			$user['css_base_print'] = true;
+			$user['css_custom_all'] = NULL;
+			$user['css_custom_print'] = NULL;
+			$user['footer'] = NULL;
 			
 			// override if available
 			@include( INC_FILE );
@@ -27,6 +33,26 @@
 		$page_info['title'] = $user['name'];
 		
 		date_default_timezone_set( $user['timezone'] );
+		
+		// favico
+		if ( !is_null( $user['favico'] ) && is_readable( $user['favico'] ) )
+		{
+			$page_info['favico'] = $user['favico'];
+		}
+		
+		// css
+		foreach ( array( 'all', 'print' ) as $css )
+		{				
+			if ( !$user[ 'css_base_' . $css ] )
+			{
+				$page_info[ 'css-' . $css ] = '';
+			}
+			
+			if ( !is_null( $user[ 'css_custom_' . $css ] ) && is_readable( $user[ 'css_custom_' . $css ] ) )
+			{
+				$page_info['head'][] = ( '<link href="' . htmlentities( $user[ 'css_custom_' . $css ] ) . '" rel="stylesheet" type="text/css" media="' . htmlentities( $css ) . '" />' );
+			}
+		}
 	}
 	
 	function _example( $id, $prefix )
@@ -160,7 +186,6 @@ if ( $page_info['type'] != 'blank' )
 	
 		<div id="contact">                
 			<div class="header"><?php echo htmlentities( $user['name'] ); ?></div>
-			<br />
 
 			<span style="font-style: italic">E-Mail</span>: <a href="mailto:<?php echo htmlentities( $user['email'] ); ?>"><?php echo htmlentities( $user['email'] ); ?></a>
 			<br />
@@ -238,9 +263,23 @@ if ( $page_info['type'] != 'blank' )
 </div>
 
 <div id="footer">
-	Last updated on <?php echo htmlentities( date( 'j F Y', filemtime( ( is_readable( INC_FILE ) )?( INC_FILE ):( $_SERVER['SCRIPT_FILENAME'] ) ) ) . '.' . "\n" ); ?>
-	<br />
-	Powered by <a href="http://vitagen.googlecode.com" target="_blank">vitagen</a>.
+<?php
+	$footer = array();
+	if ( !is_null( $user['footer'] ) )
+	{
+		$temp = explode( "\n", $user['footer'] );
+		foreach ( $temp as $t )
+		{
+			$footer[] = $t;
+		}
+	}
+	$footer[] = ( 'last updated on ' . htmlentities( date( 'j F Y', filemtime( ( is_readable( INC_FILE ) )?( INC_FILE ):( $_SERVER['SCRIPT_FILENAME'] ) ) ) ) . ' | powered by <a href="http://vitagen.googlecode.com" target="_blank">vitagen</a>' );
+	
+	foreach ( $footer as $f )
+	{
+		echo ( "\t" . $f . '<br />' . "\n" );
+	}
+?>
 </div>
 
 <?php
@@ -261,7 +300,7 @@ if ( $page_info['type'] != 'blank' )
 		
 		foreach ( $g as $v )
 		{
-			echo ( "\t\t" . $v . "\n" );
+			echo ( $v . "\n" );
 		}
 	}
 }

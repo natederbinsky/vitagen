@@ -39,24 +39,14 @@
 		$public_prefix = 'common/public/';
 		
 		// favicon
-		$page_info['favico'] = ( $public_prefix . 'favico.ico' );
-		if ( !file_exists( $page_info['favico'] ) || !is_readable( $page_info['favico'] ) )
-		{
-			$page_info['favico'] = ( $public_prefix . 'favico.default.ico' );
-		}
+		$page_info['favico'] = ( $public_prefix . 'favico.default.ico' );
 
 		// css
 		foreach ( array( 'all', 'print' ) as $css_type )
 		{
 			$css = ( 'css-' . $css_type );
 			
-			$page_info[ $css ] = ( $public_prefix . $css . '.inc.php' );
-			if ( !file_exists( $page_info[ $css ] ) || !is_readable( $page_info[ $css ] ) )
-			{
-				$page_info[ $css ] = ( $public_prefix . $css . '.default.php' );
-			}
-			
-			$page_info[ $css ] .= ( '?type=' . $page_info['type'] );
+			$page_info[ $css ] = ( $public_prefix . $css . '.default.php' . '?type=' . $page_info['type'] );
 		}
 	}
 	

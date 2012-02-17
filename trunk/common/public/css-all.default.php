@@ -41,7 +41,7 @@ a:hover
 
 #container
 {
-	<?php echo ( ( $type == 'mobile' )?('width: device-width;'):('width: 745px;') . "\n" ); ?>
+	<?php echo ( ( $type == 'mobile' )?('width: device-width;'):('width: 765px;') . "\n" ); ?>
 	margin: 20px 5px;
 }
 
@@ -83,6 +83,7 @@ a:hover
 {
 	font-size: 16px;
 	font-weight: bold;
+	margin-bottom: 4px;
 }
 
 #content
