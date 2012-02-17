@@ -50,7 +50,7 @@
 			
 			if ( !is_null( $user[ 'css_custom_' . $css ] ) && is_readable( $user[ 'css_custom_' . $css ] ) )
 			{
-				$page_info['head'][] = ( '<link href="' . htmlentities( $user[ 'css_custom_' . $css ] ) . '" rel="stylesheet" type="text/css" media="' . htmlentities( $css ) . '" />' );
+				$page_info['head'][] = ( '<link href="' . htmlentities( $user[ 'css_custom_' . $css ] ) . '?type=' . $page_info['type'] . '" rel="stylesheet" type="text/css" media="' . htmlentities( $css ) . '" />' );
 			}
 		}
 	}
