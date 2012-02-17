@@ -13,5 +13,13 @@
 	//$user['handler'] = '';
 	
 	//$user['timezone'] = '';
+	
+	//$user['favico'] = NULL;
+	//$user['css_base_all'] = true;
+	//$user['css_base_print'] = true;
+	//$user['css_custom_all'] = '';
+	//$user['css_custom_print'] = '';
+	
+	//$user['footer'] = NULL;
 
 ?>
