@@ -1,8 +1,8 @@
 <?php
 	
-	function misc_param( $name )
+	function misc_param( $name, $default = '' )
 	{
-		$return_val = '';
+		$return_val = $default;
 		
 		if ( isset( $_GET[ $name ] ) )
 		{
@@ -49,11 +49,11 @@
 		return $return_val;
 	}
 	
-	function misc_list( $items, $prefix = '' )
+	function misc_list( $items, $prefix = '', $list_style = NULL )
 	{
 		$return_val = '';
 		
-		$return_val .= ( $prefix . '<ul>' . "\n" );
+		$return_val .= ( $prefix . '<ul' . ( ( is_null( $list_style ) )?(''):( ' style="' . $list_style . '"' ) ) . '>' . "\n" );
 		foreach ( $items as $item )
 		{
 			$return_val .= ( $prefix . "\t" . '<li>' . $item . '</li>' . "\n" );
