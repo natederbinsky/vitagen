@@ -19,11 +19,6 @@ a
 	height: 80px;
 }
 
-#content .self
-{
-	font-weight: normal;
-}
-
 #footer
 {
 	display:none;

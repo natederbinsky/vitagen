@@ -122,11 +122,6 @@ a:hover
 	margin-bottom: 10px;
 }
 
-#content .self
-{
-	font-weight: 600;
-}
-
 #footer
 {
 	font-family: Arial, Helvetica, sans-serif;
