@@ -24,6 +24,7 @@
 			$user['css_base_print'] = true;
 			$user['css_custom_all'] = NULL;
 			$user['css_custom_print'] = NULL;
+			$user['rss_tab'] = NULL;
 			$user['footer'] = NULL;
 			
 			// override if available
@@ -52,6 +53,12 @@
 			{
 				$page_info['head'][] = ( '<link href="' . htmlentities( $user[ 'css_custom_' . $css ] ) . '?' . http_build_query( array( 'type'=>$page_info['type'] ) ) . '" rel="stylesheet" type="text/css" media="' . htmlentities( $css ) . '" />' );
 			}
+		}
+		
+		// rss
+		if ( !is_null( $user['rss_tab'] ) )
+		{
+			$page_info['head'][] = ( '<link rel="alternate" type="application/rss+xml" title="' . htmlentities( $user['name'] ) . '" href="?' . http_build_query( array( 'blank'=>'Y', 'tab'=>$user['rss_tab'] ) ) . '">' );
 		}
 	}
 	

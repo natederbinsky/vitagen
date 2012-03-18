@@ -19,6 +19,7 @@
 	//$user['css_base_print'] = true;
 	//$user['css_custom_all'] = '';
 	//$user['css_custom_print'] = '';
+	//$user['rss_tab'] = NULL;
 	
 	//$user['footer'] = NULL;
 
