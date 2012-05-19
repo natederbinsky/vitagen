@@ -49,14 +49,14 @@
 		return $return_val;
 	}
 	
-	function misc_list( $items, $prefix = '', $list_style = NULL )
+	function misc_list( $items, $prefix = '', $list_style = NULL, $item_style = array() )
 	{
 		$return_val = '';
 		
 		$return_val .= ( $prefix . '<ul' . ( ( is_null( $list_style ) )?(''):( ' style="' . $list_style . '"' ) ) . '>' . "\n" );
-		foreach ( $items as $item )
+		foreach ( $items as $item_key => $item )
 		{
-			$return_val .= ( $prefix . "\t" . '<li>' . $item . '</li>' . "\n" );
+			$return_val .= ( $prefix . "\t" . '<li' . ( ( isset( $item_style[ $item_key ] ) )?( ' style="' . $item_style[ $item_key ] . '"' ):('') ) . '>' . $item . '</li>' . "\n" );
 		}
 		$return_val .= ( $prefix . '</ul>' . "\n" );
 		
