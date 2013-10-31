@@ -86,7 +86,7 @@
 		
 		$section_keys = array_keys( $config['sections'] );
 		
-		$_GET[ SECTION_KEY ] = $config['sections'][ $section_keys[0] ];
+		$config[ SECTION_KEY ] = $config['sections'][ $section_keys[0] ];
 		
 	}
 	
