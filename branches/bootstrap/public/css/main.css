@@ -1,0 +1,22 @@
+
+@media screen {
+
+	body {
+		padding-top: 50px;
+		padding-bottom: 20px;
+	}
+
+}
+
+@media print {
+
+	body {
+		margin: 0;
+        padding: 0;
+	}
+	
+	a[href]:after {
+		content: none !important;
+	}
+
+}
