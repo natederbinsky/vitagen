@@ -78,7 +78,17 @@
 		$config['sections'] = array( 'About' );
 	}
 	
-	$config[ SECTION_KEY ] = ( ( isset( $_GET[ SECTION_KEY ] ) && in_array( $_GET[ SECTION_KEY ], $config['sections'] ) )?( $_GET[ SECTION_KEY ] ):( $config['sections'][ array_keys( $config['sections'] )[0] ] ) );
+	if ( isset( $_GET[ SECTION_KEY ] ) && in_array( $_GET[ SECTION_KEY ], $config['sections'] ) ) {
+		
+		$config[ SECTION_KEY ] = $_GET[ SECTION_KEY ];
+		
+	} else {
+		
+		$section_keys = array_keys( $config['sections'] );
+		
+		$_GET[ SECTION_KEY ] = $config['sections'][ $section_keys[0] ];
+		
+	}
 	
 	$config['custom'] = CUSTOM_DIR_PUBLIC;
 	$config['sectiondir'] = section_dir( $config[ SECTION_KEY ] );
