@@ -133,7 +133,7 @@
 		$footer .= t( '<footer>', $d++ );
 		$footer .= t( ( '<small>&copy; ' . a( 'mailto:' . $config['email'], '', htmlentities( $config['name'] ), false ) . ' ' . date( 'Y' ) . '</small>' ), $d );
 		$footer .= t( '<br />', $d );
-		$footer .= t( ( '<small><em>last updated on ' . htmlentities( date( 'j F Y', @filemtime( 'private/' . CONFIG_FILE ) ) ) . '</em></small>' ), $d );
+		$footer .= t( ( '<small><em>last updated on ' . htmlentities( date( 'j F Y', @filemtime( CONFIG_FILE ) ) ) . '</em></small>' ), $d );
 		$footer .= t( '</footer>', --$d );
 		$footer .= t( '</div>', --$d );
 		$footer .= t( '</div>', --$d );
