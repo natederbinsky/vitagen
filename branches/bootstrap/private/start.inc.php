@@ -1,8 +1,8 @@
 <?php
 	
-	define( 'CONFIG_FILE', 'config.inc.php' );
 	define( 'CUSTOM_DIR_PUBLIC', 'public/_custom/' );
 	define( 'CUSTOM_DIR_PRIVATE', 'private/_custom/' );
+	define( 'CONFIG_FILE', ( CUSTOM_DIR_PRIVATE . 'config.inc.php' ) );
 	
 	define( 'ALERT_KEY', 'alert' );
 	define( 'SECTION_KEY', 's' );
