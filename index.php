@@ -122,27 +122,8 @@
 		
 	}
 	
-	// footer
-	{
-		
-		$d = 0;
-		
-		$footer = t( '<div class="hidden-print">', $d++ );
-		$footer .= t( '<hr />', $d );
-		$footer .= t( '<div class="container">', $d++ );
-		$footer .= t( '<footer>', $d++ );
-		$footer .= t( ( '<small>&copy; ' . a( 'mailto:' . $config['email'], '', htmlentities( $config['name'] ), false ) . ' ' . date( 'Y' ) . '</small>' ), $d );
-		$footer .= t( '<br />', $d );
-		$footer .= t( ( '<small><em>last updated on ' . htmlentities( date( 'j F Y', @filemtime( CONFIG_FILE ) ) ) . '</em></small>' ), $d );
-		$footer .= t( '</footer>', --$d );
-		$footer .= t( '</div>', --$d );
-		$footer .= t( '</div>', --$d );
-		
-		$config['footer'] = $footer;
-		
-	}
-	
-	// content
+	// determine content source
+	$content_file = null;
 	{
 		
 		$content_file = ( CUSTOM_DIR_PRIVATE . strtolower( $config[ SECTION_KEY ] ) . '.inc.php' );
@@ -153,9 +134,41 @@
 			
 		}
 		
-		require $content_file;
+	}
+	
+	// footer
+	{
+		
+		$d = 0;
+		
+		$newest_date = @filemtime( CONFIG_FILE );
+		{
+			
+			$content_date = @filemtime( $content_file );
+			
+			if ( ( $content_date !== false ) && ( $content_date > $newest_date ) ) {
+				$newest_date = $content_date;
+			}
+			
+		}
+		
+		$footer = t( '<div class="hidden-print">', $d++ );
+		$footer .= t( '<hr />', $d );
+		$footer .= t( '<div class="container">', $d++ );
+		$footer .= t( '<footer>', $d++ );
+		$footer .= t( ( '<small>&copy; ' . a( 'mailto:' . $config['email'], '', htmlentities( $config['name'] ), false ) . ' ' . date( 'Y' ) . '</small>' ), $d );
+		$footer .= t( '<br />', $d );
+		$footer .= t( ( '<small><em>last updated on ' . htmlentities( date( 'j F Y', $newest_date ) ) . '</em></small>' ), $d );
+		$footer .= t( '</footer>', --$d );
+		$footer .= t( '</div>', --$d );
+		$footer .= t( '</div>', --$d );
+		
+		$config['footer'] = $footer;
 		
 	}
+	
+	// get content
+	require $content_file;
 	
 	////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////
