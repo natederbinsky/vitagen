@@ -1,4 +1,9 @@
 
+@page {
+    size: auto;
+    margin: 5mm 5mm 5mm 5mm;
+}
+
 @media screen {
 
 	body {
@@ -12,7 +17,7 @@
 
 	body {
 		margin: 0;
-        padding: 0;
+		padding: 0;
 	}
 	
 	a[href]:after {
