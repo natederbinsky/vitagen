@@ -13,6 +13,8 @@
 					
 		'name' => 'First Last',
 		'email' => 'user@server.com',
+		'url' => 'http://localhost',
+		'tagline' => '',
 		'mug' => '',
 		'timezone' => 'America/New_York',
 					
@@ -100,6 +102,14 @@
 		return ( CUSTOM_DIR_PUBLIC . strtolower( $section ) . '/' );
 	}
 	
+	function section_url($section) {
+		
+		global $config;
+		
+		return ( $config['url'] . '/?' . http_build_query( array( SECTION_KEY=>$section ) ) );
+		
+	}
+	
 	////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////
 	
@@ -134,6 +144,13 @@
 		
 		global $config;
 		$config[ ALERT_KEY ][] = array( $type, $title, $content );
+		
+	}
+	
+	function addToHead($content) {
+		
+		global $config;
+		$config['head'] .= $content;
 		
 	}
 	

@@ -14,7 +14,7 @@
 		$cand_css = ( CUSTOM_DIR_PUBLIC . 'custom.css' );
 		
 		if ( is_file( $cand_css ) && is_readable( $cand_css ) ) {
-			$config['head'] = t( '<link rel="stylesheet" href="' . $cand_css . '" media="all" />' );
+			addToHead( t( '<link rel="stylesheet" href="' . $cand_css . '" media="all" />' ) );
 		}
 		
 	}
