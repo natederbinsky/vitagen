@@ -27,6 +27,7 @@
 					
 		'check_links' => isset( $_GET['check'] ),
 		'no_template' => isset( $_GET['clean'] ),
+		'no_analytics' => isset( $_GET['analytics'] ),
 					
 	);
 	$user_keys = array();
