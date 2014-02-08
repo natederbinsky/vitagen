@@ -111,7 +111,7 @@
 	// analytics
 	{
 		
-		if ( !is_null( $config['googleanalytics'] ) ) {
+		if ( !is_null( $config['googleanalytics'] ) && !$config['no_analytics'] ) {
 			
 			$js = '<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));</script>';
 			$js .= '<script type="text/javascript"> try{ var pageTracker = _gat._getTracker("' . $config['googleanalytics'] . '"); pageTracker._trackPageview(); } catch(err) {} </script>';
