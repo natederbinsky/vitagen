@@ -107,7 +107,13 @@
 		
 		global $config;
 		
-		return ( $config['url'] . '/?' . http_build_query( array( SECTION_KEY=>$section ) ) );
+		$a = array( SECTION_KEY=>$section );
+		if ( $config['no_analytics'] )
+		{
+			$a['analytics'] = 'no';
+		}
+		
+		return ( $config['url'] . '/?' . q( $a ) );
 		
 	}
 	
