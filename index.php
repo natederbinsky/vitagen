@@ -75,7 +75,7 @@
 		$nav .= t( '<ul class="nav navbar-nav">', $d++ );
 		
 		foreach ( $config['sections'] as $section ) {
-			$nav .= t( '<li' . ( ( $section == $config[ SECTION_KEY ] )?( ' class="active"' ):( '' ) ) . '>' . a( ( '?' . q( array( SECTION_KEY=>$section ) ) ), htmlentities( $section ), htmlentities( $section ), false ) . '</li>', $d );
+			$nav .= t( '<li' . ( ( $section == $config[ SECTION_KEY ] )?( ' class="active"' ):( '' ) ) . '>' . a( section_url( $section ), htmlentities( $section ), htmlentities( $section ), false ) . '</li>', $d );
 		}
 		
 		$nav .= t( '</ul>', --$d );
