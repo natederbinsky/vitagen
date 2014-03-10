@@ -53,7 +53,7 @@
 		
 		{
 			
-			$brand = a( '?', htmlentities( $config['name'] ), htmlentities( $config['name'] ), false, 'navbar-brand' );
+			$brand = a( section_url( '' ), htmlentities( $config['name'] ), htmlentities( $config['name'] ), false, 'navbar-brand' );
 			
 			if ( !is_null( $config['linkedin'] ) ) {
 				$brand .= a( u( 'http://www.linkedin.com/in/' . $config['linkedin'] ), 'LinkedIn', ( '<img class="img-rounded" width="20" height="20" src="public/img/linkedin.png" />' ), true, 'navbar-brand' );
