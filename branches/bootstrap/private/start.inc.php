@@ -7,13 +7,16 @@
 	define( 'ALERT_KEY', 'alert' );
 	define( 'SECTION_KEY', 's' );
 	
+	define( 'PROTOCOL', ( ( isset( $_SERVER['HTTPS'] ) )?( 'https' ):( 'http' ) ) );
+	define( 'PROTOCOL_KEY', 'protocol' );
+	
 	//
 
 	$config = array(
 					
 		'name' => 'First Last',
 		'email' => 'user@server.com',
-		'url' => 'http://localhost',
+		'url' => 'localhost', // sans protocol
 		'tagline' => '',
 		'mug' => '',
 		'timezone' => 'America/New_York',
@@ -49,7 +52,7 @@
 		'content'=>2, // make sure this is first (so that content can use others)
 		'name'=>0, 'email'=>0,
 		'title'=>0, 'pic'=>0, 'custom'=>0, 'sectiondir'=>0,
-		'head'=>2, 'nav'=>2, 'alert'=>2, 'footer'=>2, 'js'=>2,
+		'head'=>2, 'nav'=>2, 'alert'=>2, 'footer'=>2, 'js'=>2, 'protocol'=>0
 	);
 	
 	{
@@ -96,6 +99,20 @@
 	$config['custom'] = CUSTOM_DIR_PUBLIC;
 	$config['sectiondir'] = section_dir( $config[ SECTION_KEY ] );
 	
+	$config[ PROTOCOL_KEY ] = PROTOCOL;
+	
+	////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////
+	
+	function site_url($force_protocol = null)
+	{
+		
+		global $config;
+		
+		return ( ( ( is_null( $force_protocol ) )?( PROTOCOL ):( $force_protocol ) ) . '://' . $config['url'] );
+		
+	}
+	
 	////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////
 	
@@ -103,7 +120,7 @@
 		return ( CUSTOM_DIR_PUBLIC . strtolower( $section ) . '/' );
 	}
 	
-	function section_url($section) {
+	function section_url($section, $force_protocol = null) {
 		
 		global $config;
 		
@@ -113,7 +130,7 @@
 			$a['analytics'] = 'no';
 		}
 		
-		return ( $config['url'] . '/?' . q( $a ) );
+		return ( site_url( $force_protocol ) . '/?' . q( $a ) );
 		
 	}
 	

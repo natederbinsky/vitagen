@@ -72,9 +72,9 @@
 			function yt(id, title, vimeo) {
 				
 				if ( !vimeo ) {
-					ytsource = ( 'http://www.youtube.com/embed/' + id + '?rel=0&amp;autoplay=1' );
+					ytsource = ( '{protocol}' + '://www.youtube.com/embed/' + id + '?rel=0&amp;autoplay=1' );
 				} else {
-					ytsource = ( 'http://player.vimeo.com/video/' + id + '?autoplay=1' );
+					ytsource = ( '{protocol}' + '://player.vimeo.com/video/' + id + '?autoplay=1' );
 				}
 				
 				$('#ytmodaltitle').html( title );
