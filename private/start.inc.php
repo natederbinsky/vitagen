@@ -24,6 +24,8 @@
 		'sections' => array( 'About' ),
 		'custom_icons' => false,
 					
+		'webapp' => true,
+					
 		'linkedin' => null,
 		'googlescholar' => null,
 		'googleanalytics' => null,
@@ -52,7 +54,7 @@
 		'content'=>2, // make sure this is first (so that content can use others)
 		'name'=>0, 'email'=>0,
 		'title'=>0, 'pic'=>0, 'custom'=>0, 'sectiondir'=>0,
-		'head'=>2, 'nav'=>2, 'alert'=>2, 'footer'=>2, 'js'=>2, 'protocol'=>0
+		'head'=>2, 'nav'=>2, 'alert'=>2, 'footer'=>2, 'js'=>2, 'protocol'=>0, 'webapp-enable'=>0
 	);
 	
 	{

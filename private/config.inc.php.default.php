@@ -10,6 +10,8 @@
 	$config['sections'] = array( 'A', 'B', 'C' );
 	// $config['custom_icons'] = true;
 	
+	// $config['webapp'] = false;
+	
 	// $config['linkedin'] = '';
 	// $config['googlescholar'] = '';
 	// $config['googleanalytics'] = '';

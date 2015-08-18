@@ -108,6 +108,18 @@
 		
 	}
 	
+	// webapp enable
+	{
+		$result = 'yes';
+		
+		if ( is_bool( $config['webapp'] ) && ( $config['webapp'] === false ) )
+		{
+			$result = 'no';
+		}
+		
+		$config['webapp-enable'] = $result;
+	}
+	
 	// analytics
 	{
 		
