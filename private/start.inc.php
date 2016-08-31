@@ -156,7 +156,7 @@
 					  
 		}
 		
-		return ( '<a ' . ( ( empty( $class ) )?( '' ):( 'class="' . $class . '"' ) ) . ( ( !empty( $url ) )?( 'href="' . u( $url ) . '"' ):( '' ) ) . ( ( $n === true )?( ' target="_blank"' ):( '' ) ) . ' title="' . $t . '"' . $other . '>' . $c . '</a>' );
+		return ( '<a ' . ( ( empty( $class ) )?( '' ):( 'class="' . $class . '"' ) ) . ( ( !empty( $url ) )?( 'href="' . u( $url ) . '"' ):( '' ) ) . ( ( $n === true )?( ' target="_blank" rel="noopener noreferrer"' ):( '' ) ) . ' title="' . $t . '"' . $other . '>' . $c . '</a>' );
 	}
 	
 	function q($args) {
